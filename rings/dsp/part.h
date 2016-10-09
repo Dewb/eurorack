@@ -159,6 +159,8 @@ class Part {
   int32_t active_voice_;
   uint32_t step_counter_;
   int32_t polyphony_;
+
+  uint32_t ticks_since_strum_;
   
   Resonator resonator_[kMaxPolyphony];
   String string_[kNumStrings];

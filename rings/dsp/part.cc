@@ -52,6 +52,8 @@ void Part::Init(uint16_t* reverb_buffer) {
     plucker_[i].Init();
     dc_blocker_[i].Init(1.0f - 10.0f / kSampleRate);
   }
+
+  ticks_since_strum_ = 0;
   
   reverb_.Init(reverb_buffer);
   limiter_.Init();
@@ -482,6 +484,7 @@ void Part::Process(
       performance_state.strum);
 
   if (performance_state.strum) {
+    ticks_since_strum_ = 0;
     note_[active_voice_] = note_filter_.stable_note();
     if (polyphony_ > 1 && polyphony_ & 1) {
       active_voice_ = kPingPattern[step_counter_ % 8];
@@ -489,10 +492,14 @@ void Part::Process(
     } else {
       active_voice_ = (active_voice_ + 1) % polyphony_;
     }
+  } else {
+    ticks_since_strum_++;
   }
   
-  note_[active_voice_] = note_filter_.note();
-  
+  if (ticks_since_strum_ < 32) {
+    note_[active_voice_] = note_filter_.note();
+  }
+
   fill(&out[0], &out[size], 0.0f);
   fill(&aux[0], &aux[size], 0.0f);
   for (int32_t voice = 0; voice < polyphony_; ++voice) {
