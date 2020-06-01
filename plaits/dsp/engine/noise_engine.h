@@ -43,6 +43,7 @@ class NoiseEngine : public Engine {
   
   virtual void Init(stmlib::BufferAllocator* allocator);
   virtual void Reset();
+  virtual void SyncPhase();
   virtual void Render(const EngineParameters& parameters,
       float* out,
       float* aux,

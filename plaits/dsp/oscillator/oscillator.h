@@ -66,6 +66,14 @@ class Oscillator {
     pw_ = 0.5f;
   }
 
+  void SyncPhase() {
+    phase_ = 0.5f;
+    next_sample_ = 0.0f;
+    lp_state_ = 1.0f;
+    hp_state_ = 0.0f;
+    high_ = true;
+  }
+
   template<OscillatorShape shape>
   void Render(float frequency, float pw, float* out, size_t size) {
     Render<shape, false, false>(frequency, pw, NULL, out, size);

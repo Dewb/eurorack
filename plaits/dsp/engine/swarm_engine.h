@@ -56,6 +56,10 @@ class GrainEnvelope {
     amplitude_ = 0.5f;
     previous_size_ratio_ = 0.0f;
   }
+
+  void SyncPhase() {
+    phase_ = 0.0f;
+  }
   
   inline void Step(float rate, bool burst_mode, bool start_burst) {
     bool randomize = false;
@@ -138,6 +142,11 @@ class AdditiveSawOscillator {
     gain_ = 0.0f;
   }
 
+  inline void SyncPhase() {
+    phase_ = 0.0f;
+    next_sample_ = 0.0f;
+  }
+
   inline void Render(
       float frequency,
       float level,
@@ -197,6 +206,12 @@ class SwarmVoice {
     saw_.Init();
     sine_.Init();
   }
+
+  void SyncPhase() {
+    envelope_.Init();
+    saw_.SyncPhase();
+    sine_.SyncPhase();
+  }
   
   void Render(
       float f0,
@@ -238,6 +253,7 @@ class SwarmEngine : public Engine {
   
   virtual void Init(stmlib::BufferAllocator* allocator);
   virtual void Reset();
+  virtual void SyncPhase();
   virtual void Render(const EngineParameters& parameters,
       float* out,
       float* aux,

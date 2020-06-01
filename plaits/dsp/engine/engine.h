@@ -81,6 +81,7 @@ class Engine {
   ~Engine() { }
   virtual void Init(stmlib::BufferAllocator* allocator) = 0;
   virtual void Reset() = 0;
+  virtual void SyncPhase() = 0;
   virtual void Render(
       const EngineParameters& parameters,
       float* out,

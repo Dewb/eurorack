@@ -53,6 +53,12 @@ void AdditiveEngine::Reset() {
 
 }
 
+void AdditiveEngine::SyncPhase() {
+  for (int i = 0; i < kNumHarmonicOscillators; ++i) {
+      harmonic_oscillator_[i].SyncPhase();
+    }
+}
+
 void AdditiveEngine::UpdateAmplitudes(
     float centroid,
     float slope,

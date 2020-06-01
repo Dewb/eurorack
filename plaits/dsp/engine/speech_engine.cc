@@ -56,6 +56,10 @@ void SpeechEngine::Reset() {
   lpc_speech_synth_word_bank_.Reset();
 }
 
+void SpeechEngine::SyncPhase() {
+
+}
+
 void SpeechEngine::Render(
     const EngineParameters& parameters,
     float* out,

@@ -55,6 +55,13 @@ class ZOscillator {
     carrier_shape_ = 0.0f;
     mode_ = 0.0f;
   }
+
+  void SyncPhase() {
+    carrier_phase_ = 0.0f;
+    discontinuity_phase_ = 0.0f;
+    formant_phase_ = 0.0f;
+    next_sample_ = 0.0f;
+  }
   
   void Render(
       float carrier_frequency,

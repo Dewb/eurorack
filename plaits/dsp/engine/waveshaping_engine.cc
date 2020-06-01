@@ -52,6 +52,11 @@ void WaveshapingEngine::Reset() {
   
 }
 
+void WaveshapingEngine::SyncPhase() {
+  slope_.SyncPhase();
+  triangle_.SyncPhase();
+}
+
 float Tame(float f0, float harmonics, float order) {
   f0 *= harmonics;
   float max_f = 0.5f / order;

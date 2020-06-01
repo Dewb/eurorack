@@ -51,6 +51,10 @@ class HarmonicOscillator {
       amplitude_[i] = 0.0f;
     }
   }
+
+  void SyncPhase() {
+    phase_ = 0.0f;
+  }
   
   template<int first_harmonic_index>
   void Render(

@@ -45,6 +45,12 @@ void SwarmEngine::Init(BufferAllocator* allocator) {
 
 void SwarmEngine::Reset() { }
 
+void SwarmEngine::SyncPhase() {
+  for (int i = 0; i < kNumSwarmVoices; ++i) {
+    swarm_voice_[i].SyncPhase();
+  }
+}
+
 void SwarmEngine::Render(
     const EngineParameters& parameters,
     float* out,

@@ -52,6 +52,12 @@ void FMEngine::Reset() {
   
 }
 
+void FMEngine::SyncPhase() {
+  carrier_phase_ = 0;
+  modulator_phase_ = 0;
+  sub_phase_ = 0;
+}
+
 inline float FMEngine::SinePM(uint32_t phase, float fm) const {
   phase += (static_cast<uint32_t>((fm + 4.0f) * 536870912.0f)) << 3;
   uint32_t integral = phase >> 22;

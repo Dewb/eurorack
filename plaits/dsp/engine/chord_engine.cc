@@ -102,6 +102,13 @@ void ChordEngine::Reset() {
   }
 }
 
+void ChordEngine::SyncPhase() {
+  for (int i = 0; i < kChordNumVoices; ++i) {
+    divide_down_voice_[i].SyncPhase();
+    wavetable_voice_[i].SyncPhase();
+  }
+}
+
 const float fade_point[kChordNumVoices] = {
   0.55f, 0.47f, 0.49f, 0.51f, 0.53f
 };

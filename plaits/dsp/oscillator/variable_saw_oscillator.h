@@ -56,6 +56,13 @@ class VariableSawOscillator {
     pw_ = 0.5f;
     waveshape_ = 0.0f;
   }
+
+  void SyncPhase() {
+    phase_ = 0.0f;
+    next_sample_ = 0.0f;
+    previous_pw_ = 0.5f;
+    high_ = false;
+  }
   
   void Render(
       float frequency,

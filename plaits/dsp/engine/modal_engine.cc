@@ -45,6 +45,10 @@ void ModalEngine::Reset() {
   voice_.Init();
 }
 
+void ModalEngine::SyncPhase() {
+
+}
+
 void ModalEngine::Render(
     const EngineParameters& parameters,
     float* out,

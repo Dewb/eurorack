@@ -50,6 +50,10 @@ class SineOscillator {
     frequency_ = 0.0f;
     amplitude_ = 0.0f;
   }
+
+  void SyncPhase() {
+    phase_ = 0.0f;
+  }
   
   inline float Next(float frequency) {
     if (frequency >= 0.5f) {
@@ -130,6 +134,11 @@ class FastSineOscillator {
     y_ = 0.0f;
     epsilon_ = 0.0f;
     amplitude_ = 0.0f;
+  }
+
+  void SyncPhase() {
+    x_ = 1.0f;
+    y_ = 0.0f;
   }
   
   static inline float Fast2Sin(float f) {

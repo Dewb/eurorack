@@ -44,6 +44,10 @@ void HiHatEngine::Reset() {
   
 }
 
+void HiHatEngine::SyncPhase() {
+  
+}
+
 void HiHatEngine::Render(
     const EngineParameters& parameters,
     float* out,

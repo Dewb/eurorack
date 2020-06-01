@@ -54,6 +54,10 @@ void NoiseEngine::Reset() {
   
 }
 
+void NoiseEngine::SyncPhase() {
+    
+}
+
 void NoiseEngine::Render(
     const EngineParameters& parameters,
     float* out,

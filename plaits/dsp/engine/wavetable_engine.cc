@@ -60,6 +60,10 @@ void WavetableEngine::Reset() {
   
 }
 
+void WavetableEngine::SyncPhase() {
+  phase_ = 0.0f;
+}
+
 inline float Clamp(float x, float amount) {
   x = x - 0.5f;
   x *= amount;

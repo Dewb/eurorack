@@ -45,6 +45,10 @@ void BassDrumEngine::Reset() {
   
 }
 
+void BassDrumEngine::SyncPhase() {
+    
+}
+
 void BassDrumEngine::Render(
     const EngineParameters& parameters,
     float* out,

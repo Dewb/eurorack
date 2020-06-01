@@ -52,6 +52,10 @@ void StringEngine::Reset() {
   }
 }
 
+void StringEngine::SyncPhase() {
+  
+}
+
 void StringEngine::Render(
     const EngineParameters& parameters,
     float* out,

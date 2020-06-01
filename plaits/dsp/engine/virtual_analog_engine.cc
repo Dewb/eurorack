@@ -53,6 +53,13 @@ void VirtualAnalogEngine::Reset() {
   
 }
 
+void VirtualAnalogEngine::SyncPhase() {
+  primary_.SyncPhase();
+  auxiliary_.SyncPhase();
+  sync_.SyncPhase();
+  variable_saw_.SyncPhase();
+}
+
 const float intervals[5] = {
   0.0f, 7.01f, 12.01f, 19.01f, 24.01f
 };

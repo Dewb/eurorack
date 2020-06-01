@@ -79,13 +79,16 @@ void Voice::Render(
     const Modulations& modulations,
     Frame* frames,
     size_t size) {
+
   // Trigger, LPG, internal envelope.
       
   // Delay trigger by 1ms to deal with sequencers or MIDI interfaces whose
   // CV out lags behind the GATE out.
-  trigger_delay_.Write(modulations.trigger);
-  float trigger_value = trigger_delay_.Read(kTriggerDelay);
-  
+
+  // trigger_delay_.Write(modulations.trigger);
+  // float trigger_value = trigger_delay_.Read(kTriggerDelay);
+  float trigger_value = modulations.trigger;
+
   bool previous_trigger_state = trigger_state_;
   if (!previous_trigger_state) {
     if (trigger_value > 0.3f) {
@@ -131,7 +134,12 @@ void Voice::Render(
   } else {
     p.trigger = TRIGGER_UNPATCHED;
   }
-  
+
+  if (modulations.trigger_patched && rising_edge) {
+    e->SyncPhase();
+    out_post_processor_.Reset();
+  }
+
   const float short_decay = (200.0f * kBlockSize) / kSampleRate *
       SemitonesToRatio(-96.0f * patch.decay);
 
@@ -198,9 +206,12 @@ void Voice::Render(
   bool already_enveloped = pp_s.already_enveloped;
   e->Render(p, out_buffer_, aux_buffer_, size, &already_enveloped);
   
+  /*
   bool lpg_bypass = already_enveloped || \
       (!modulations.level_patched && !modulations.trigger_patched);
-  
+  */
+  bool lpg_bypass = true;
+
   // Compute LPG parameters.
   if (!lpg_bypass) {
     const float hf = patch.lpg_colour;

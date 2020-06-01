@@ -48,6 +48,11 @@ void GrainEngine::Reset() {
   
 }
 
+void GrainEngine::SyncPhase() {
+  grainlet_[0].SyncPhase();
+  grainlet_[1].SyncPhase();
+}
+
 void GrainEngine::Render(
     const EngineParameters& parameters,
     float* out,

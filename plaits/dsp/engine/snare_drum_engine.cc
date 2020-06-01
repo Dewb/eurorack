@@ -44,6 +44,10 @@ void SnareDrumEngine::Reset() {
   
 }
 
+void SnareDrumEngine::SyncPhase() {
+  
+}
+
 void SnareDrumEngine::Render(
     const EngineParameters& parameters,
     float* out,

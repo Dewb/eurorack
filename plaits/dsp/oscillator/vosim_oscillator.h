@@ -52,7 +52,13 @@ class VOSIMOscillator {
     formant_2_frequency_ = 0.0f;
     carrier_shape_ = 0.0f;
   }
-  
+
+  void SyncPhase() {
+    carrier_phase_ = 0.0f;
+    formant_1_phase_ = 0.0f;
+    formant_2_phase_ = 0.0f;
+  }
+
   void Render(
       float carrier_frequency,
       float formant_frequency_1,

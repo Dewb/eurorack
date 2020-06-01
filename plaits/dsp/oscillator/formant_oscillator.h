@@ -51,6 +51,12 @@ class FormantOscillator {
     formant_frequency_ = 0.01f;
     phase_shift_ = 0.0f;
   }
+
+  void SyncPhase() {
+    carrier_phase_ = 0.0f;
+    formant_phase_ = 0.0f;
+    next_sample_ = 0.0f;
+  }
   
   void Render(
       float carrier_frequency,

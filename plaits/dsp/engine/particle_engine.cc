@@ -47,6 +47,10 @@ void ParticleEngine::Reset() {
   diffuser_.Clear();
 }
 
+void ParticleEngine::SyncPhase() {
+  
+}
+
 void ParticleEngine::Render(
     const EngineParameters& parameters,
     float* out,

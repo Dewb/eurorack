@@ -104,6 +104,10 @@ class WavetableOscillator {
     lp_ = 0.0f;
     differentiator_.Init();
   }
+
+  void SyncPhase() {
+     phase_ = 0.0f;
+  }
   
   void Render(
       float frequency,

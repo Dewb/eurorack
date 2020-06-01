@@ -56,6 +56,14 @@ class VariableShapeOscillator {
     pw_ = 0.5f;
     waveshape_ = 0.0f;
   }
+
+  void SyncPhase() {
+    master_phase_ = 0.0f;
+    slave_phase_ = 0.0f;
+    next_sample_ = 0.0f;
+    previous_pw_ = 0.5f;
+    high_ = false;
+  }
   
   template<bool enable_sync>
   void Render(

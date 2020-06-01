@@ -62,6 +62,12 @@ class StringSynthOscillator {
     saw_2_gain_ = 0.0f;
     saw_1_gain_ = 0.0f;
   }
+
+  inline void SyncPhase() {
+    phase_ = 0.0f;
+    next_sample_ = 0.0f;
+    segment_ = 0.0f;
+  }
   
   inline void Render(
       float frequency,

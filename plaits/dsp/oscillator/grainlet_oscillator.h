@@ -54,6 +54,12 @@ class GrainletOscillator {
     carrier_shape_ = 0.0f;
     carrier_bleed_ = 0.0f;
   }
+
+   void SyncPhase() {
+    carrier_phase_ = 0.0f;
+    formant_phase_ = 0.0f;
+    next_sample_ = 0.0f;
+  }
   
   void Render(
       float carrier_frequency,
